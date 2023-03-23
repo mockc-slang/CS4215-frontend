@@ -1,5 +1,5 @@
-import { Environment } from 'calc-slang/dist/types';
 import { KonvaEventObject } from 'konva/lib/Node';
+import { Environment } from 'mockc-slang/dist/types';
 import React, { RefObject } from 'react';
 import {
   Circle,

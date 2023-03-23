@@ -1,5 +1,5 @@
-import { Chapter } from 'calc-slang/dist/types';
 import { throttle } from 'lodash';
+import { Chapter } from 'mockc-slang/dist/types';
 import { applyMiddleware, compose, createStore as _createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
