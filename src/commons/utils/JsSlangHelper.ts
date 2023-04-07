@@ -132,9 +132,8 @@ export function createContext<T>(
   externalContext: T,
   variant: Variant = Variant.DEFAULT
 ) {
-  return createSlangContext<T>(variant, externals, externalContext);
+  return createSlangContext<T>(variant, externals, externalContext, externalBuiltIns);
 }
-
 
 // Given a Context, returns a privileged Context that when referenced,
 // intercepts reads from the underlying Context and returns desired values
