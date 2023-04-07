@@ -1,5 +1,5 @@
-import { Chapter, Variant } from 'calc-slang/dist/types';
 import _ from 'lodash';
+import { Chapter, Variant } from 'mockc-slang/dist/types';
 import { connect, MapDispatchToProps, MapStateToProps } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators, Dispatch } from 'redux';

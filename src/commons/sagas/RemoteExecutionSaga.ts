@@ -1,7 +1,7 @@
 import { SlingClient } from '@sourceacademy/sling-client';
-import { ExceptionError } from 'calc-slang/dist/errors/errors';
-import { Variant } from 'calc-slang/dist/types';
 import _ from 'lodash';
+import { ExceptionError } from 'mockc-slang/dist/errors/errors';
+import { Variant } from 'mockc-slang/dist/types';
 import { SagaIterator } from 'redux-saga';
 import { call, put, race, select, take } from 'redux-saga/effects';
 import {

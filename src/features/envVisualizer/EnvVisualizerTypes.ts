@@ -1,9 +1,9 @@
+import { KonvaEventObject } from 'konva/lib/Node';
 import {
   EnvTree as EnvironmentTree,
   EnvTreeNode as EnvironmentTreeNode
-} from 'calc-slang/dist/createContext';
-import { Environment } from 'calc-slang/dist/types';
-import { KonvaEventObject } from 'konva/lib/Node';
+} from 'mockc-slang/dist/createContext';
+import { Environment } from 'mockc-slang/dist/types';
 import React from 'react';
 
 import { ArrayUnit as CompactArrayUnit } from './compactComponents/ArrayUnit';

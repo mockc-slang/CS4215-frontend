@@ -1,13 +1,13 @@
+import { random } from 'lodash';
 import {
   Context,
   findDeclaration,
   interrupt,
   runInContext
-} from 'calc-slang';
-import { InterruptedError } from 'calc-slang/dist/errors/errors';
-import { parse } from 'calc-slang/dist/parser/parser';
-import { Chapter, Variant } from 'calc-slang/dist/types';
-import { random } from 'lodash';
+} from 'mockc-slang';
+import { InterruptedError } from 'mockc-slang/dist/errors/errors';
+import { parse } from 'mockc-slang/dist/parser/parser';
+import { Chapter, Variant } from 'mockc-slang/dist/types';
 import Phaser from 'phaser';
 import { SagaIterator } from 'redux-saga';
 import { call, put, race, select, StrictEffect, take } from 'redux-saga/effects';
