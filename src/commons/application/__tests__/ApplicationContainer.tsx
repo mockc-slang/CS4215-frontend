@@ -31,7 +31,7 @@ test('ApplicationContainer redirects from / to /academy', () => {
   expect(tree.find('.NavigationBar__link.pt-active').contains('Game')).toBe(true)
 }) */
 
-test('ApplicationContainer renders NotFound on unknown routes', () => {
+test('ApplicationContainer renders  on unknown routes', () => {
   const store = mockInitialStore();
   const app = (
     <Provider store={store}>

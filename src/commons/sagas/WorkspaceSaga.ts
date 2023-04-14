@@ -1,10 +1,5 @@
 import { random } from 'lodash';
-import {
-  Context,
-  findDeclaration,
-  interrupt,
-  runInContext
-} from 'mockc-slang';
+import { Context, findDeclaration, interrupt, runInContext } from 'mockc-slang';
 import { InterruptedError } from 'mockc-slang/dist/errors/errors';
 import { parse } from 'mockc-slang/dist/parser/parser';
 import { Chapter, Variant } from 'mockc-slang/dist/types';
@@ -37,8 +32,8 @@ import {
   getDifferenceInMethods,
   getRestoreExtraMethodsString,
   getStoreExtraMethodsString,
-  highlightClean,
-  highlightLine,
+  // highlightClean,
+  // highlightLine,
   makeElevatedContext,
   visualizeEnv
 } from '../utils/JsSlangHelper';
@@ -77,7 +72,6 @@ export default function* WorkspaceSaga(): SagaIterator {
     const workspaceLocation = action.payload.workspaceLocation;
     yield* evalEditor(workspaceLocation);
   });
-
 
   yield takeEvery(
     TOGGLE_EDITOR_AUTORUN,
@@ -136,9 +130,9 @@ export default function* WorkspaceSaga(): SagaIterator {
     function* (action: ReturnType<typeof actions.highlightEditorLine>) {
       const highlightedLines = action.payload.highlightedLines;
       if (highlightedLines.length === 0) {
-        highlightClean();
+        // highlightClean();
       } else {
-        highlightLine(highlightedLines[0]);
+        // highlightLine(highlightedLines[0]);
       }
       yield;
     }
@@ -167,8 +161,7 @@ export default function* WorkspaceSaga(): SagaIterator {
     ]);
 
     const chapterChanged: boolean = newChapter !== oldChapter || newVariant !== oldVariant;
-    const toChangeChapter: boolean =
-      chapterChanged;
+    const toChangeChapter: boolean = chapterChanged;
 
     if (toChangeChapter) {
       const library: Library = {
@@ -205,13 +198,11 @@ export default function* WorkspaceSaga(): SagaIterator {
     PLAYGROUND_EXTERNAL_SELECT,
     function* (action: ReturnType<typeof actions.externalLibrarySelect>) {
       const { workspaceLocation, externalLibraryName: newExternalLibraryName } = action.payload;
-      const [globals, oldExternalLibraryName]: [
-        Array<[string, any]>,
-        ExternalLibraryName
-      ] = yield select((state: OverallState) => [
-        state.workspaces[workspaceLocation].globals,
-        state.workspaces[workspaceLocation].externalLibrary
-      ]);
+      const [globals, oldExternalLibraryName]: [Array<[string, any]>, ExternalLibraryName] =
+        yield select((state: OverallState) => [
+          state.workspaces[workspaceLocation].globals,
+          state.workspaces[workspaceLocation].externalLibrary
+        ]);
       const symbols = externalLibraries.get(newExternalLibraryName)!;
       const library: Library = {
         external: {
@@ -546,15 +537,14 @@ export function* evalCode(
   );
 
   const { result, interrupted, paused } = yield race({
-    result:
-      call(runInContext, code, context, {
-            scheduler: 'preemptive',
-            executionMethod: 'interpreter',
-            originalMaxExecTime: execTime,
-            stepLimit: stepLimit,
-            variant: Variant.DEFAULT,
-            useSubst: false
-          }),
+    result: call(runInContext, code, context, {
+      scheduler: 'preemptive',
+      executionMethod: 'interpreter',
+      originalMaxExecTime: execTime,
+      stepLimit: stepLimit,
+      variant: Variant.DEFAULT,
+      useSubst: false
+    }),
 
     /**
      * A BEGIN_INTERRUPT_EXECUTION signals the beginning of an interruption,
@@ -605,7 +595,7 @@ export function* evalCode(
     yield put(actions.endDebuggerPause(workspaceLocation));
     yield put(actions.evalInterpreterSuccess('Breakpoint hit!', workspaceLocation));
     return;
-  } 
+  }
   yield* dumpDisplayBuffer(workspaceLocation);
   // Do not write interpreter output to REPL, if executing chunks (e.g. prepend/postpend blocks)
   if (actionType !== EVAL_SILENT) {
